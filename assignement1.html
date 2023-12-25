@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 25px;
+            text-align: center;
+            margin: auto;
+            background-color: black;        
+        }
+        .choose{
+            margin: 50px;
+            padding: 10px;
+            margin: auto;
+            background-color: #4f4f4f;
+        }
+        .mainImage{
+            margin: auto;
+            min-height: 500px;
+            max-height: 550px;
+            min-width: 320px;
+            max-width: 340px;
+            display: flex;
+            background-color: #CCEECC;
+            border: 20px solid #122222;
+        }
+        .elements{
+            margin: auto;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .options img{
+            margin-left: 10px;
+            max-height:150px;
+            width: auto;
+        }
+        img{
+            border: 20px solid #122222;
+        }
+    </style>
+    <script>
+        function upDate(imageUrl) {
+            document.getElementById("mainImage").style.backgroundImage = "url('" + imageUrl + "')";
+            document.getElementById("mainImage").innerHTML = "";
+        }
+
+        function unDo() {
+            document.getElementById("mainImage").style.backgroundColor = "#CCEECC";
+            document.getElementById("mainImage").style.backgroundImage = "none";
+            document.getElementById("mainImage").innerHTML = "hover on an image bellow to display it here";
+        }
+    </script>
+</head>
+<body>
+    <div class="choose">
+        <div class="mainImage" id="mainImage">
+            hover on an image bellow to display it here
+        </div>
+        <div class="elements">
+            <div class="options" id="image1" onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg')">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg" alt="dog">
+            </div>
+            <div class="options" id="image2"   onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG')">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG" alt="dog2">
+            </div>
+            <div class="options" id="image3"   onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg')">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg" alt="dog3">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
