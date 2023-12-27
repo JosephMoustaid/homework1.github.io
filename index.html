@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Gallery</title>
     <style>
-        body{
+        body {
             font-size: 25px;
             text-align: center;
             margin: auto;
-            background-color: black;        
+            background-color: black;
         }
-        .choose{
+        .choose {
             margin: 50px;
             padding: 10px;
             margin: auto;
             background-color: #4f4f4f;
         }
-        .mainImage{
+        .mainImage {
             margin: auto;
             min-height: 500px;
             max-height: 550px;
@@ -26,57 +26,68 @@
             display: flex;
             background-color: #CCEECC;
             border: 20px solid #122222;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .elements{
+        .elements {
             margin: auto;
             width: 50%;
             display: flex;
             justify-content: space-between;
         }
-        .options img{
+        .options img {
             margin-left: 10px;
-            max-height:150px;
+            max-height: 150px;
             width: auto;
+            border: 10px solid #122222;
+            cursor: pointer;
         }
-        #image4,#image5,#image6{
+        #image4, #image5, #image6 {
             margin-left: 10px;
-            max-width:150px;
+            max-width: 150px;
             height: auto;
+            border: 10px solid #122222;
+            cursor: pointer;
         }
-        img{
+        img {
             border: 20px solid #122222;
         }
     </style>
     <script>
         var Images = [
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg",
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG",
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg",
-        "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
-        "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-        "https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg"
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg",
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG",
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg",
+            "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
+            "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+            "https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg"
         ];
-
         var i = 0;
-        document.addEventListener('keydown', function(event) {
-          // Check if the pressed key is the Tab key
-          if (event.key === 'Tab' || event.keyCode === 9) {
-            console.log('Tab key pressed');
-            if(i >= 0 && i < 6 ){
-                document.getElementById("mainImage").style.backgroundImage = "url('" + Images[i] + "')";
-                document.getElementById("mainImage").innerHTML = "";
-                i++;
+        document.addEventListener('keydown', function (event) {
+            // Check if the pressed key is the Tab key
+            if (event.key === 'Tab' || event.keyCode === 9) {
+                console.log('Tab key pressed');
+                if (i >= 0 && i < 6) {
+                    document.getElementById("mainImage").style.backgroundImage = "url('" + Images[i] + "')";
+                    document.getElementById("mainImage").innerHTML = "";
+                    i++;
+                } else if (i == 6) {
+                    document.getElementById("mainImage").style.backgroundColor = "#CCEECC";
+                    document.getElementById("mainImage").style.backgroundImage = "none";
+                    document.getElementById("mainImage").innerHTML = "Use Tab to change image";
+                    i = 0;
+                }
+                event.preventDefault(); // Prevent default Tab behavior
             }
-            else if (i == 6 ) {
-                document.getElementById("mainImage").style.backgroundColor = "#CCEECC";
-                document.getElementById("mainImage").style.backgroundImage = "none";
-                document.getElementById("mainImage").innerHTML = "Use Tab to change image";
-                i=0;
-            }
-          }
-              
+
         });
 
+        function changeImage(index) {
+            document.getElementById("mainImage").style.backgroundImage = "url('" + Images[index] + "')";
+            document.getElementById("mainImage").innerHTML = "";
+            i = index + 1;
+        }
     </script>
 </head>
 <body>
@@ -85,25 +96,26 @@
             Use Tab to change image
         </div>
         <div class="elements">
-            <div class="options" id="image1">
+            <div class="options" id="image1" onclick="changeImage(0)">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg" alt="dog">
             </div>
-            <div class="options" id="image2"   >
+            <div class="options" id="image2" onclick="changeImage(1)">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG" alt="dog2">
             </div>
-            <div class="options" id="image3"   >
+            <div class="options" id="image3" onclick="changeImage(2)">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg" alt="dog3">
             </div>
-            <div class="options" id="image4"   >
+            <div class="options" id="image4" onclick="changeImage(3)">
                 <img src="https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg" alt="dog4">
             </div>
-            <div class="options" id="image5"   >
+            <div class="options" id="image5" onclick="changeImage(4)">
                 <img src="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg" alt="dog5">
             </div>
-            <div class="options" id="image6" >
+            <div class="options" id="image6" onclick="changeImage(5)">
                 <img src="https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg" alt="dog6">
             </div>
         </div>
     </div>
 </body>
 </html>
+
