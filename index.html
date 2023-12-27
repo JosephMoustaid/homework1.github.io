@@ -43,32 +43,59 @@
         }
     </style>
     <script>
-        function upDate(imageUrl) {
-            document.getElementById("mainImage").style.backgroundImage = "url('" + imageUrl + "')";
-            document.getElementById("mainImage").innerHTML = "";
-        }
+        var Images[6]=[
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg",
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG",
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg",
+            "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
+            "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+            "https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg"
+        ];
+        var i = 0;
+        document.addEventListener('keydown', function(event) {
+          // Check if the pressed key is the Tab key
+          if (event.key === 'Tab' || event.keyCode === 9) {
+            console.log('Tab key pressed');
+            if(i >= 0 && i < 6 ){
+                document.getElementById("mainImage").style.backgroundImage = "url('" + Images[i] + "')";
+                document.getElementById("mainImage").innerHTML = "";
+                i++;
+            }
+            else if (i == 6 ) {
+                document.getElementById("mainImage").style.backgroundColor = "#CCEECC";
+                document.getElementById("mainImage").style.backgroundImage = "none";
+                document.getElementById("mainImage").innerHTML = "Use Tab to change image";
+                i=0;
+            }
+          }
+              
+        });
 
-        function unDo() {
-            document.getElementById("mainImage").style.backgroundColor = "#CCEECC";
-            document.getElementById("mainImage").style.backgroundImage = "none";
-            document.getElementById("mainImage").innerHTML = "hover on an image bellow to display it here";
-        }
     </script>
 </head>
 <body>
     <div class="choose">
         <div class="mainImage" id="mainImage">
-            hover on an image bellow to display it here
+            Use Tab to change image
         </div>
         <div class="elements">
-            <div class="options" id="image1" onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg')">
+            <div class="options" id="image1">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg" alt="dog">
             </div>
-            <div class="options" id="image2"   onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG')">
+            <div class="options" id="image2"   >
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG" alt="dog2">
             </div>
-            <div class="options" id="image3"   onmouseout="unDo()" onmouseover="upDate('https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg')">
+            <div class="options" id="image3"   >
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg" alt="dog3">
+            </div>
+            <div class="options" id="image4"   >
+                <img src="https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg" alt="dog4">
+            </div>
+            <div class="options" id="image5"   >
+                <img src="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg" alt="dog5">
+            </div>
+            <div class="options" id="image6" >
+                <img src="https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg" alt="dog6">
             </div>
         </div>
     </div>
