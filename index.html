@@ -38,19 +38,25 @@
             max-height:150px;
             width: auto;
         }
+        #image4,#image5,#image6{
+            margin-left: 10px;
+            max-width:150px;
+            height: auto;
+        }
         img{
             border: 20px solid #122222;
         }
     </style>
     <script>
-        var Images[6]=[
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg",
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG",
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg",
-            "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
-            "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
-            "https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg"
+        var Images = [
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg",
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG",
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg",
+        "https://cdn.britannica.com/92/212692-050-D53981F5/labradoodle-dog-stick-running-grass.jpg",
+        "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg",
+        "https://cdn.britannica.com/70/8170-050-82AE83CD/Chihuahua-smooth-coat.jpg"
         ];
+
         var i = 0;
         document.addEventListener('keydown', function(event) {
           // Check if the pressed key is the Tab key
